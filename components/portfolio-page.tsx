@@ -2,9 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Globe, Palette, Database, ExternalLink } from 'lucide-react'
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Link from 'next/link'
+import { Globe, Palette, Database} from 'lucide-react'
 import Image from 'next/image'
 
 export default function PortfolioPage() {
