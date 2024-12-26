@@ -6,8 +6,6 @@ import { Globe, Palette, Database} from 'lucide-react'
 import Image from 'next/image'
 
 export default function PortfolioPage() {
-  const [activeTab, setActiveTab] = useState("all")
-  
   const projects = [
     {
       title: "Web Development",
@@ -62,10 +60,6 @@ export default function PortfolioPage() {
       "Tableau"
     ]
   }
-
-  const filteredProjects = activeTab === "all" 
-    ? projects 
-    : projects.filter(project => project.category === activeTab)
 
   return (
     <div className="relative min-h-screen">
