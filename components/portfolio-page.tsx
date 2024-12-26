@@ -1,37 +1,9 @@
 'use client'
 
-import { useState } from "react"
 import { motion } from "framer-motion"
-import { Globe, Palette, Database} from 'lucide-react'
 import Image from 'next/image'
 
 export default function PortfolioPage() {
-  const projects = [
-    {
-      title: "Web Development",
-      description: "Full-stack applications built with modern technologies",
-      icon: <Globe className="w-6 h-6 text-white" />,
-      category: "web",
-      className: "md:col-span-2 md:row-span-2",
-      link: "/web-development"
-    },
-    {
-      title: "Graphic Design", 
-      description: "Brand identity and visual design projects",
-      icon: <Palette className="w-6 h-6 text-white" />,
-      category: "design",
-      className: "md:col-span-1 md:row-span-1",
-      link: "/graphic-design"
-    },
-    {
-      title: "Data Science",
-      description: "Data analysis and machine learning projects",
-      icon: <Database className="w-6 h-6 text-white" />,
-      category: "data",
-      className: "md:col-span-1 md:row-span-1",
-      link: "/data-science"
-    }
-  ]
 
   const skills = {
     "Programming Languages": [
