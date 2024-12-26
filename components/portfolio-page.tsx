@@ -37,6 +37,34 @@ export default function PortfolioPage() {
     }
   ]
 
+  const skills = {
+    "Programming Languages": [
+      "Python",
+      "MySQL",
+      "C++",
+      "C",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Liquid"
+    ],
+    "Libraries": [
+      "Pandas",
+      "NumPy",
+      "Scikit-Learn",
+      "Matplotlib"
+    ],
+    "Software": [
+      "Git",
+      "GitHub",
+      "Figma",
+      "Jupyter Notebook",
+      "Visual Studio Code",
+      "Shopify",
+      "Tableau"
+    ]
+  }
+
   const filteredProjects = activeTab === "all" 
     ? projects 
     : projects.filter(project => project.category === activeTab)
@@ -91,97 +119,43 @@ export default function PortfolioPage() {
           </div>
         </div>
 
-        <div className="rounded-t-[3rem] flex-grow p-6 relative overflow-hidden min-h-screen">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/main-bg-2.jpg"
-              alt="Background"
-              fill
-              className="object-cover object-center"
-              priority
-              quality={100}
-            />
-            <div className="absolute inset-0 bg-black/30 shadow-[inset_0_0_50px_rgba(0,0,0,1)]" />
-          </div>
-
-          <div className="relative z-10 max-w-6xl mx-auto">
-            <Tabs defaultValue="all" className="mb-8">
-              <TabsList className="backdrop-blur-md bg-white/10 border border-white/20">
-                <TabsTrigger value="all" onClick={() => setActiveTab("all")}>
-                  All Work
-                </TabsTrigger>
-                <TabsTrigger value="web" onClick={() => setActiveTab("web")}>
-                  Web Development
-                </TabsTrigger>
-                <TabsTrigger value="design" onClick={() => setActiveTab("design")}>
-                  Graphic Design
-                </TabsTrigger>
-                <TabsTrigger value="data" onClick={() => setActiveTab("data")}>
-                  Data Science
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {filteredProjects.map((project, index) => (
-                <Link href={project.link} key={project.title}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className={`group relative overflow-hidden rounded-3xl backdrop-blur-md bg-white/10 hover:bg-white/20 transition-all duration-300 shadow-lg border border-white/20 p-6 ${project.className}`}
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="p-3 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
-                        {project.icon}
-                      </div>
-                      <ExternalLink className="w-5 h-5 text-white group-hover:text-white transition-colors" />
-                    </div>
-                    <h3 className="text-xl font-semibold mt-4 mb-2 text-white">{project.title}</h3>
-                    <p className="text-gray-200 group-hover:text-white transition-colors">
-                      {project.description}
-                    </p>
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-
-            {/* Added Additional Sections */}
-            <div className="mt-16 space-y-16">
-              {/* About Section */}
-              <section className="backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-8">
-                <h2 className="text-3xl font-bold text-white mb-6">About My Process</h2>
-                <div className="grid md:grid-cols-3 gap-8">
-                  <div className="text-gray-200">
-                    <h3 className="text-xl font-semibold mb-4">Research & Planning</h3>
-                    <p>Understanding client needs and creating detailed project roadmaps for success.</p>
-                  </div>
-                  <div className="text-gray-200">
-                    <h3 className="text-xl font-semibold mb-4">Development</h3>
-                    <p>Building scalable solutions using cutting-edge technologies and best practices.</p>
-                  </div>
-                  <div className="text-gray-200">
-                    <h3 className="text-xl font-semibold mb-4">Testing & Deployment</h3>
-                    <p>Rigorous testing and smooth deployment processes for reliable products.</p>
-                  </div>
-                </div>
-              </section>
-
-              {/* Skills Section */}
-              <section className="backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-8">
-                <h2 className="text-3xl font-bold text-white mb-6">Technical Skills</h2>
-                <div className="grid md:grid-cols-4 gap-4">
-                  {['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'SQL', 'AWS', 'Docker'].map((skill) => (
-                    <div key={skill} className="bg-white/10 rounded-xl p-4 text-white text-center hover:bg-white/20 transition-colors">
-                      {skill}
-                    </div>
+        {/* Skills Section */}
+        <div className="min-h-screen">
+          <div className="p-8 md:p-12">
+            {Object.entries(skills).map(([category, skillList], categoryIndex) => (
+              <div key={category} className="mb-20">
+                <motion.h3 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: categoryIndex * 0.2 }}
+                  className="text-black text-2xl md:text-3xl mb-8 font-medium"
+                >
+                  {category}
+                </motion.h3>
+                <div className="space-y-4">
+                  {skillList.map((skill, index) => (
+                    <motion.div
+                      key={skill}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ 
+                        duration: 0.5, 
+                        delay: (categoryIndex * skillList.length + index) * 0.1 
+                      }}
+                    >
+                      <h4 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter text-black satoshi-black hover:text-gray-600 transition-colors cursor-default">
+                        {skill}
+                      </h4>
+                    </motion.div>
                   ))}
                 </div>
-              </section>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </div>
   )
 }
+
+
