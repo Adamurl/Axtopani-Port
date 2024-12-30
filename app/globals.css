@@ -78,8 +78,8 @@ body {
 }
 
 @font-face {
-  font-family: 'YourFontName';
-  src: url('/fonts/Satoshi-Black.woff') format('woff');
+  font-family: 'Satoshi';
+  src: url('../app/fonts/Satoshi-Black.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }

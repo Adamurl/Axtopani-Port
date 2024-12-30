@@ -43,20 +43,20 @@ export default function PortfolioPage() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      <div className="relative z-10 p-8 md:p-12 flex flex-col">
-        <div className="flex justify-between items-center mb-8">
-          <span className="text-sm text-black">©2024</span>
+      <div className="relative z-2 p-2 md:p-6 flex flex-col">
+        <div className="flex justify-center items-center mb-8">
+          <span className="text-m text-black text-center">2024 TLAZO CAMATI</span>
         </div>
         <header className="mb-8">
-          <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-black satoshi-black break-words">ADAM AXTOPANI GONZALES</h1>
-          <p className="text-sm md:text-base lg:text-lg text-gray-600 mt-2 tracking-wide satoshi-regular">
+          <h1 className="text-7xl sm:text-8xl md:text-9xl xl:text-[15rem] font-black tracking-tighter text-black satoshi-black leading-none">ADAM AXTOPANI GONZALES</h1>
+          <p className="text-sm md:text-base lg:text-lg text-black mt-2 tracking-wide satoshi-regular">
             [ a-ksht-oh-pan-ee ]
           </p>
         </header>
 
         {/* Bio Section */}
-        <div className="mb-12">
-          <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter text-black satoshi-black">
+        <div className="mb-12 items-center justify-center">
+          <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold text-black satoshi-black">
             Mexican-American founder, Web Developer [ specializing in creating responsive, user-focused websites ] and Data Analyst [ leveraging machine learning to drive data-driven insights and smarter decisions ]
           </p>
         </div>
