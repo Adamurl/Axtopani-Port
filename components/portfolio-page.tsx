@@ -42,8 +42,8 @@ export default function PortfolioPage() {
   }
 
   return (
-    <div className="relative min-h-screen">
-      <div className="relative z-10 min-h-screen p-8 md:p-12 flex flex-col">
+    <div className="relative min-h-screen flex items-center justify-center">
+      <div className="relative z-10 p-8 md:p-12 flex flex-col">
         <div className="flex justify-between items-center mb-8">
           <span className="text-sm text-black">©2024</span>
         </div>
@@ -194,29 +194,6 @@ export default function PortfolioPage() {
                   <p style={{ color: "#495cd5" }} className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-blue satoshi-black hover:text-gray-300 transition-colors">
                     [ UCSC.EDU ]
                   </p>
-                </div>
-              </motion.div>
-
-              
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex justify-between items-end pt-20"
-              >
-                <p className="text-xl md:text-2xl text-white/80 max-w-md">
-                  OR SCAN THIS QR CODE AND YOU'LL MAGICALLY GET IN CONTACT WITH ME. [LINKEDIN LINK]
-                </p>
-                
-                <div className="w-32 h-32 md:w-40 md:h-40 relative">
-                  <Image
-                    src="/placeholder.svg?height=160&width=160"
-                    alt="LinkedIn QR Code"
-                    width={160}
-                    height={160}
-                    className="invert"
-                  />
                 </div>
               </motion.div>
             </div>
