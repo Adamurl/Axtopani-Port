@@ -55,7 +55,7 @@ export default function PortfolioPage() {
           id: 2,
           title: "Tochtli Project 2",
           description: "Description of Tochtli project 2",
-          image: "/images/tochtli-totemockup.jpg",
+          image: "/images/Tochtli-BagMU.png",
         },
         {
           id: 3,
@@ -67,7 +67,7 @@ export default function PortfolioPage() {
           id: 4,
           title: "Tochtli Project 4",
           description: "Description of Tochtli project 4",
-          image: "/placeholder.svg?height=600&width=800",
+          image: "/images/tochtli-totemockup.jpg ",
         },
       ],
     },
@@ -203,14 +203,14 @@ export default function PortfolioPage() {
                     {category}
                   </h2>
                   <p className={`text-lg md:text-xl text-gray-600 max-w-xl ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
-                    {works[category.toLowerCase()].sectionDescription}
+                    {works[category].sectionDescription}
                   </p>
                 </motion.div>
               </div>
 
               {/* Project Grid */}
               <div className={`p-4 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 content-center lg:w-[70%]`}>
-                {works[category.toLowerCase()].projects.map((work, workIndex) => (
+                {works[category].projects.map((work, workIndex) => (
                   <motion.div
                     key={work.id}
                     initial={{ opacity: 0, y: 20 }}
