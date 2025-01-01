@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from 'next/image'
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import type { Works, WorkCategory } from '@/components/types/works'
 
 
 export default function PortfolioPage() {
@@ -37,7 +38,7 @@ export default function PortfolioPage() {
     ]
   }
 
-  const works = {
+  const works: Works = {
     tochtli: {
       sectionDescription: "Tochtli Cultural Wear is an Aztec-inspired clothing brand dedicated to celebrating and sharing the richness of Aztec culture" + 
                           " through modern designs. As the founder, I design visually compelling graphics for social media and marketing campaigns, boosting" + 
@@ -187,58 +188,63 @@ export default function PortfolioPage() {
         </div>
 
         {/* Works Sections */}
-        {['Tochtli', 'Sigma Lambda Beta', 'Personal'].map((category, index) => (
-          <div key={category} className="min-h-screen w-full bg-white">
-            <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
-              {/* Text Content */}
-              <div className={`p-4 md:p-8 flex flex-col justify-center lg:w-[30%] ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'}`}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className={`sticky top-12`}
-                >
-                  <span className={`text-sm text-gray-500 mb-4 block ${category === 'Sigma Lambda Beta' ? 'text-right' : ''}`}>0{index + 1}.</span>
-                  <h2 className={`text-5xl md:text-6xl xl:text-9xl font-black tracking-tighter text-black satoshi-black mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
-                    {category}
-                  </h2>
-                  <p className={`text-lg md:text-xl text-gray-600 max-w-xl ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
-                    {works[category].sectionDescription}
-                  </p>
-                </motion.div>
-              </div>
-
-              {/* Project Grid */}
-              <div className={`p-4 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 content-center lg:w-[70%]`}>
-                {works[category].projects.map((work, workIndex) => (
+        {(['Tochtli', 'Sigma Lambda Beta', 'Personal'] as const).map((category, index) => {
+          const key = category.toLowerCase() as WorkCategory;
+          return (
+            <div key={category} className="min-h-screen w-full bg-white">
+              <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
+                {/* Text Content */}
+                <div className={`p-4 md:p-8 flex flex-col justify-center lg:w-[30%] ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'}`}>
                   <motion.div
-                    key={work.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: workIndex * 0.1 }}
-                    className="group relative"
+                    transition={{ duration: 0.5 }}
+                    className={`sticky top-12`}
                   >
-                    <div className="relative aspect-[3/3] overflow-hidden rounded-lg">
-                      <Image
-                        src={work.image}
-                        alt={work.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className={`mt-4 flex items-start ${index % 2 === 0 ? '' : 'flex-row-reverse'}`}>
-                      <span className={`text-sm text-gray-500 ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>{work.id}.</span>
-                      <div className={index % 2 === 0 ? 'text-left' : 'text-right'}>
-                        <h3 className="text-lg font-bold text-black">{work.title}</h3>
-                        <p className="text-sm text-gray-600">{work.description}</p>
-                      </div>
-                    </div>
+                    <span className={`text-sm text-gray-500 mb-4 block ${category === 'Sigma Lambda Beta' ? 'text-right' : ''}`}>0{index + 1}.</span>
+                    <h2 className={`text-5xl md:text-6xl xl:text-7xl font-black tracking-tighter text-black satoshi-black mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                      {category}
+                      <br />
+                      Works
+                    </h2>
+                    <p className={`text-lg md:text-xl text-gray-600 max-w-xl ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                      {works[key].sectionDescription}
+                    </p>
                   </motion.div>
-                ))}
+                </div>
+
+                {/* Project Grid */}
+                <div className={`p-4 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 content-center lg:w-[70%]`}>
+                  {works[key].projects.map((work, workIndex) => (
+                    <motion.div
+                      key={work.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: workIndex * 0.1 }}
+                      className="group relative"
+                    >
+                      <div className="relative aspect-[4/4] overflow-hidden rounded-lg">
+                        <Image
+                          src={work.image}
+                          alt={work.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className={`mt-4 flex items-start ${index % 2 === 0 ? '' : 'flex-row-reverse'}`}>
+                        <span className={`text-sm text-gray-500 ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>{work.id}.</span>
+                        <div className={index % 2 === 0 ? 'text-left' : 'text-right'}>
+                          <h3 className="text-lg font-bold text-black">{work.title}</h3>
+                          <p className="text-sm text-gray-600">{work.description}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
 
         {/* Skills Section */}
