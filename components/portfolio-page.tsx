@@ -49,27 +49,27 @@ export default function PortfolioPage() {
       projects: [
         {
           id: 1,
-          title: "Tochtli Project 1",
-          description: "Description of Tochtli project 1",
+          title: "Tochtli Website",
+          description: "Click to view",
           image: "/images/tochtli-mockup.png",
           link: "https://www.tochtliwear.com/"
         },
         {
           id: 2,
-          title: "Tochtli Project 2",
-          description: "Description of Tochtli project 2",
+          title: "Custom Packaging Mock-Up",
+          description: "Concept",
           image: "/images/Tochtli-BagMU.png",
         },
         {
           id: 3,
-          title: "Tochtli Project 3",
-          description: "Description of Tochtli project 3",
+          title: "Cihuateteotl",
+          description: "Informational Instagram Post",
           image: "/images/DDLM-PostMain.png",
         },
         {
           id: 4,
-          title: "Tochtli Project 4",
-          description: "Description of Tochtli project 4",
+          title: "Tote Bag Mock-Up",
+          description: "Social Media Post",
           image: "/images/tochtli-totemockup.jpg ",
         },
       ],
@@ -235,7 +235,7 @@ export default function PortfolioPage() {
                       transition={{ duration: 0.5, delay: workIndex * 0.1 }}
                       className={`group relative ${work.isWide ? 'sm:col-span-2' : ''}`}
                     >
-                      <div className="relative w-full overflow-hidden">
+                      <div className="relative w-full overflow-hidden rounded-lg">
                         {work.link ? (
                           <Link href={work.link} target="_blank" rel="noopener noreferrer" className="block relative">
                             <Image
@@ -245,7 +245,7 @@ export default function PortfolioPage() {
                               height={600}
                               className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center ">
                               <ExternalLink className="text-white w-8 h-8" />
                             </div>
                           </Link>
