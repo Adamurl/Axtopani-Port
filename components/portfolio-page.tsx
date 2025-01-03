@@ -2,9 +2,10 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
-import type { Works, WorkCategory } from '@/components/types/works'
+import { ChevronDown, ExternalLink } from 'lucide-react'
+import type { Works, WorkCategory} from '@/components/types/works'
 
 
 export default function PortfolioPage() {
@@ -41,7 +42,7 @@ export default function PortfolioPage() {
   const works: Works = {
     tochtli: {
       sectionDescription: "Tochtli Cultural Wear is an Aztec-inspired clothing brand dedicated to celebrating and sharing the richness of Aztec culture" + 
-                          " through modern designs. As the founder, I design visually compelling graphics for social media and marketing campaigns, boosting" + 
+                          " through modern designs. As the Founding Graphic Designer & Web Developer, I design visually compelling graphics for social media and marketing campaigns, boosting" + 
                           " online sales and community engagement. I also develop and maintain a responsive e-commerce website, ensuring a seamless shopping" + 
                           " experience for over 5,000 customers. By combining creativity and technical expertise, I aim to preserve cultural heritage while" + 
                           " delivering impactful and accessible designs.",
@@ -51,6 +52,7 @@ export default function PortfolioPage() {
           title: "Tochtli Project 1",
           description: "Description of Tochtli project 1",
           image: "/images/tochtli-mockup.png",
+          link: "https://www.tochtliwear.com/"
         },
         {
           id: 2,
@@ -79,26 +81,29 @@ export default function PortfolioPage() {
           id: 1,
           title: "SLB Project 1",
           description: "Description of SLB project 1",
-          image: "/placeholder.svg?height=600&width=800",
+          image: "/images/SLB-FDAY.png",
+          isWide: true
+
         },
         {
           id: 2,
           title: "SLB Project 2",
           description: "Description of SLB project 2",
-          image: "/placeholder.svg?height=600&width=800",
+          image: "/images/DA-MU.png",
         },
         {
           id: 3,
           title: "SLB Project 3",
           description: "Description of SLB project 3",
-          image: "/placeholder.svg?height=600&width=800",
+          image: "/images/SPR23.png",
         },
         {
           id: 4,
           title: "SLB Project 4",
-          description: "Description of SLB project 4",
-          image: "/placeholder.svg?height=600&width=800",
-        },
+          description: "Description of SLB project 3",
+          image: "/images/SLB-HF.png",
+          isWide: true
+        }
       ],
     },
     personal: {
@@ -108,7 +113,7 @@ export default function PortfolioPage() {
           id: 1,
           title: "Personal Project 1",
           description: "Description of personal project 1",
-          image: "/placeholder.svg?height=600&width=800",
+          image: "/images/Tecpatl-Graphic.jpg",
         },
         {
           id: 2,
@@ -188,24 +193,31 @@ export default function PortfolioPage() {
         </div>
 
         {/* Works Sections */}
+        <header className="mb-8">
+          <div className="flex items-center gap-8">
+            <h1 className="text-7xl sm:text-8xl md:text-9xl xl:text-[13rem] font-black tracking-tighter text-black satoshi-black leading-none shrink-0">DESIGN</h1>
+            <p className="text-sm md:text-base lg:text-lg text-black tracking-wide satoshi-regular self-stretch flex items-center">
+              This section showcases my work as a graphic designer and web developer. From creating visually compelling social media graphics to building responsive websites,
+              I focus on blending creativity with functionality. My designs aim to engage audiences, enhance user experiences, and bring ideas to life.
+            </p>
+          </div>
+        </header>
         {(['Tochtli', 'Sigma Lambda Beta', 'Personal'] as const).map((category, index) => {
           const key = category.toLowerCase() as WorkCategory;
           return (
             <div key={category} className="min-h-screen w-full bg-white">
               <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
                 {/* Text Content */}
-                <div className={`p-4 md:p-8 flex flex-col justify-center lg:w-[30%] ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'}`}>
+                <div className={`p-4 md:p-8 flex flex-col lg:w-[30%] ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'}`}>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className={`sticky top-12`}
+                    className={`${category === 'Tochtli' ? 'sticky top-0 pt-4' : 'sticky top-12'}`}
                   >
                     <span className={`text-sm text-gray-500 mb-4 block ${category === 'Sigma Lambda Beta' ? 'text-right' : ''}`}>0{index + 1}.</span>
                     <h2 className={`text-5xl md:text-6xl xl:text-7xl font-black tracking-tighter text-black satoshi-black mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
                       {category}
-                      <br />
-                      Works
                     </h2>
                     <p className={`text-lg md:text-xl text-gray-600 max-w-xl ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
                       {works[key].sectionDescription}
@@ -214,22 +226,38 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Project Grid */}
-                <div className={`p-4 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 content-center lg:w-[70%]`}>
+                <div className={`p-4 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 content-start lg:w-[70%]`}>
                   {works[key].projects.map((work, workIndex) => (
                     <motion.div
                       key={work.id}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: workIndex * 0.1 }}
-                      className="group relative"
+                      className={`group relative ${work.isWide ? 'sm:col-span-2' : ''}`}
                     >
-                      <div className="relative aspect-[4/4] overflow-hidden rounded-lg">
-                        <Image
-                          src={work.image}
-                          alt={work.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
+                      <div className="relative w-full overflow-hidden">
+                        {work.link ? (
+                          <Link href={work.link} target="_blank" rel="noopener noreferrer" className="block relative">
+                            <Image
+                              src={work.image}
+                              alt={work.title}
+                              width={work.isWide ? 1600 : 800}
+                              height={600}
+                              className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                              <ExternalLink className="text-white w-8 h-8" />
+                            </div>
+                          </Link>
+                        ) : (
+                          <Image
+                            src={work.image}
+                            alt={work.title}
+                            width={work.isWide ? 1600 : 800}
+                            height={600}
+                            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                          />
+                        )}
                       </div>
                       <div className={`mt-4 flex items-start ${index % 2 === 0 ? '' : 'flex-row-reverse'}`}>
                         <span className={`text-sm text-gray-500 ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>{work.id}.</span>
