@@ -70,7 +70,7 @@ export default function PortfolioPage() {
           id: 4,
           title: "Tote Bag Mock-Up",
           description: "Social Media Post",
-          image: "/images/tochtli-totemockup.jpg ",
+          image: "/images/tochtli-totemockup.jpg",
         },
       ],
     },
