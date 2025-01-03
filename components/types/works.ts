@@ -3,6 +3,8 @@ export type Project = {
     title: string;
     description: string;
     image: string;
+    isWide?: boolean;
+    link?: string;
   }
   
   export type WorkSection = {
