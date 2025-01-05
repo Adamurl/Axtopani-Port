@@ -4,6 +4,7 @@ export type Project = {
     description: string;
     image: string;
     isWide?: boolean;
+    isLong?: boolean;
     link?: string;
   }
   
