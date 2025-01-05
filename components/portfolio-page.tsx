@@ -75,32 +75,24 @@ export default function PortfolioPage() {
       ],
     },
     "sigma lambda beta": {
-      sectionDescription: "Custom description for Sigma Lambda Beta projects.",
+      sectionDescription: "",
       projects: [
         {
           id: 1,
-          title: "SLB Project 1",
-          description: "Description of SLB project 1",
-          image: "/images/SLB-FDAY.png",
-          isWide: true
-
-        },
-        {
-          id: 2,
-          title: "SLB Project 2",
-          description: "Description of SLB project 2",
+          title: "New Memeber Presentation",
+          description: "Poster Mock-Up",
           image: "/images/DA-MU.png",
         },
         {
-          id: 3,
-          title: "SLB Project 3",
-          description: "Description of SLB project 3",
+          id: 2,
+          title: "Spring '23 Recruitment",
+          description: "Social Media Post",
           image: "/images/SPR23.png",
         },
         {
-          id: 4,
-          title: "SLB Project 4",
-          description: "Description of SLB project 3",
+          id: 3,
+          title: "Harvest Festival",
+          description: "Community Service Social Media Post",
           image: "/images/SLB-HF.png",
           isWide: true
         }
@@ -113,25 +105,14 @@ export default function PortfolioPage() {
           id: 1,
           title: "Personal Project 1",
           description: "Description of personal project 1",
-          image: "/images/Tecpatl-Graphic.jpg",
+          image: "/placeholder.svg?height=600&width=800",
         },
         {
           id: 2,
           title: "Personal Project 2",
           description: "Description of personal project 2",
-          image: "/placeholder.svg?height=600&width=800",
-        },
-        {
-          id: 3,
-          title: "Personal Project 3",
-          description: "Description of personal project 3",
-          image: "/placeholder.svg?height=600&width=800",
-        },
-        {
-          id: 4,
-          title: "Personal Project 4",
-          description: "Description of personal project 4",
-          image: "/placeholder.svg?height=600&width=800",
+          image: "/images/tecpatl-MU.png",
+          isLong: true
         },
       ],
     },
@@ -144,11 +125,11 @@ export default function PortfolioPage() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      <div className="relative z-2 p-2 md:p-6 flex flex-col">
-        <div className="flex justify-center items-center mb-8">
-          <span className="text-m text-black text-center">2024 TLAZO CAMATI</span>
+      <div className="relative z-2 p-2 md:p-0 flex flex-col">
+        <div className="flex justify-center items-center mb-2">
+          <span className="text-m text-black text-center ">2024 TLAZO CAMATI</span>
         </div>
-        <header className="mb-8">
+        <header className="max-w-10xl mx-auto p-8">
           <h1 className="text-7xl sm:text-8xl md:text-9xl xl:text-[13rem] font-black tracking-tighter text-black satoshi-black leading-none">ADAM AXTOPANI GONZALES</h1>
           <p className="text-sm md:text-base lg:text-lg text-black mt-2 tracking-wide satoshi-regular">
             [ ash-toh-pan-ee ]
@@ -156,7 +137,7 @@ export default function PortfolioPage() {
         </header>
 
         {/* Bio Section */}
-        <div className="mb-12 items-center justify-center">
+        <div className="mb-12 items-center justify-center max-w-10xl mx-auto p-8">
           <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold text-black satoshi-black">
             Mexican-American founder, Web Developer [ specializing in creating responsive, user-focused websites ] and Data Analyst [ leveraging machine learning to drive data-driven insights and smarter decisions ]
           </p>
@@ -192,11 +173,12 @@ export default function PortfolioPage() {
           </div>
         </div>
 
+        
         {/* Works Sections */}
         <header className="mb-8">
           <div className="flex items-center gap-8">
             <h1 className="text-7xl sm:text-8xl md:text-9xl xl:text-[13rem] font-black tracking-tighter text-black satoshi-black leading-none shrink-0">DESIGN</h1>
-            <p className="text-sm md:text-base lg:text-lg text-black tracking-wide satoshi-regular self-stretch flex items-center">
+            <p className="text-sm md:text-base lg:text-lg text-black tracking-wide satoshi-regular self-stretch flex items-center max-w-xl">
               This section showcases my work as a graphic designer and web developer. From creating visually compelling social media graphics to building responsive websites,
               I focus on blending creativity with functionality. My designs aim to engage audiences, enhance user experiences, and bring ideas to life.
             </p>
@@ -205,8 +187,24 @@ export default function PortfolioPage() {
         {(['Tochtli', 'Sigma Lambda Beta', 'Personal'] as const).map((category, index) => {
           const key = category.toLowerCase() as WorkCategory;
           return (
-            <div key={category} className="min-h-screen w-full bg-white">
-              <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
+
+            <div key={category} className={`min-h-screen w-full ${category === 'Tochtli' ? 'relative' : 'bg-white'}`}>
+              {category === 'Tochtli' && (
+                <div className="absolute inset-0 overflow-hidden">
+                  <Image
+                    src="/images/tochtli-bg2.jpg"
+                    alt="Tochtli Background"
+                    fill
+                    className="object-cover"
+                    priority
+                    quality={100}
+                  />
+                  <div className="absolute inset-0 bg-black/0" />
+                </div>
+              )}
+              <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'} ${category === 'Tochtli' ? 'relative z-10' : ''}`}>
+                
+                
                 {/* Text Content */}
                 <div className={`p-4 md:p-8 flex flex-col lg:w-[30%] ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'}`}>
                   <motion.div
@@ -273,6 +271,172 @@ export default function PortfolioPage() {
             </div>
           );
         })}
+
+        {/* DATA Section */}
+        <div className="bg-black text-white">
+          <div className="relative min-h-screen">
+            {/* Background Image */}
+            <div className="absolute inset-0 overflow-hidden">
+              <Image
+                src="/images/DProject-1.png" // Replace with the path to your JPG image
+                alt="Data Background 1"
+                fill
+                className="object-cover object-top"
+                priority
+                quality={100}
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-black/100" />
+            </div>
+
+            {/* Main Content */}
+            <div className="relative z-10 max-w-10xl mx-auto p-8">
+              <header className="mb-8">
+                <div className="flex flex-row-reverse items-start gap-8">
+                  <h1 className="text-7xl sm:text-8xl md:text-9xl xl:text-[13rem] font-black tracking-tighter text-white satoshi-black leading-none shrink-0">
+                    DATA
+                  </h1>
+                  <p className="text-sm md:text-base lg:text-lg text-white tracking-wide satoshi-regular self-stretch flex items-center text-right max-w-xl">
+                    This section highlights my work in data analysis and machine
+                    learning. From building predictive models to optimizing business
+                    strategies, I use tools like Python, SQL, and Tableau to uncover
+                    insights and drive decisions. My projects focus on transforming raw
+                    data into actionable solutions that deliver real impact.
+                  </p>
+                </div>
+              </header>
+
+              <h2 className="text-2xl font-bold mb-8 satoshi-black">PROJECT 1</h2>
+
+              {/* Bento Grid */}
+              <div className="max-w-6xl mx-auto">
+                <div className="grid grid-cols-3 auto-rows-auto gap-4">
+
+                  {/* Large Image - Spans 2 rows, 2 columns */}
+                  <div className="col-span-2 row-span-2">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="group h-full"
+                    >
+                      <div className="relative h-full w-full overflow-hidden rounded-3xl bg-white">
+                        <Image
+                          src="/placeholder.svg?height=800&width=1067"
+                          alt="Data Project 1"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Square Image */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="group"
+                  >
+                    <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-white">
+                      <Image
+                        src="/images/msql-logo.png"
+                        alt="MySQL logo"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Accent Color Square */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="group"
+                  >
+                    <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-[#15bc6c] flex items-center justify-center">
+                      <span className="text-8xl font-bold text-black">Xx</span>
+                    </div>
+                  </motion.div>
+
+                  {/* Gradient Rectangle */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="group"
+                  >
+                    <div className="relative aspect-[2/1] w-full overflow-hidden rounded-3xl bg-gradient-to-r from-[#15bc6c] to-white" />
+                  </motion.div>
+
+                  {/* Dark Image Rectangle */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="col-span-2"
+                  >
+                    <div className="relative aspect-[2/1] w-full overflow-hidden rounded-3xl bg-white">
+                      <Image
+                        src="/placeholder.svg?height=800&width=1422"
+                        alt="Data Project 3"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  </motion.div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        {/* Tochtli Section */}
+        <div className="bg-black text-white">
+          <div className="relative min-h-screen">
+            <div className="absolute inset-0 overflow-hidden">
+              <Image
+                src="/placeholder.svg?height=800&width=800"
+                alt="Tochtli Data Background"
+                fill
+                className="object-cover"
+                priority
+                quality={100}
+              />
+              <div className="absolute inset-0 bg-black/30" />
+            </div>
+            <div className="relative z-10 flex flex-col justify-center min-h-screen p-4 md:p-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="max-w-4xl mx-auto"
+              >
+                <span className="text-sm text-white mb-4 block">02.</span>
+                <h2 className="text-5xl md:text-6xl xl:text-7xl font-black tracking-tighter text-white satoshi-black mb-4">
+                  Tochtli Data
+                </h2>
+                <p className="text-lg md:text-xl text-white/80 mb-8">
+                  Description of Tochtli Data project. This project demonstrates the application of data science in real-world scenarios.
+                </p>
+                <div className="relative w-full overflow-hidden rounded-lg">
+                  <Image
+                    src="/placeholder.svg?height=800&width=1600"
+                    alt="Tochtli Data Project"
+                    width={1600}
+                    height={800}
+                    className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
 
 
         {/* Skills Section */}
