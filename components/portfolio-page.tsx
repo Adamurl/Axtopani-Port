@@ -121,7 +121,7 @@ export default function PortfolioPage() {
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section)
-  }
+  } //1
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
