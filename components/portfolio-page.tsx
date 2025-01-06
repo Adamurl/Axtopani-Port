@@ -99,18 +99,18 @@ export default function PortfolioPage() {
       ],
     },
     personal: {
-      sectionDescription: "Custom description for personal projects.",
+      sectionDescription: "IN-PROGRESS [ WILL ADD MORE ]",
       projects: [
         {
           id: 1,
-          title: "Personal Project 1",
-          description: "Description of personal project 1",
-          image: "/placeholder.svg?height=600&width=800",
+          title: "Fear of God Campaign",
+          description: "Concept",
+          image: "/images/persproj-1.png",
         },
         {
           id: 2,
-          title: "Personal Project 2",
-          description: "Description of personal project 2",
+          title: "Tecpatl",
+          description: "Words can hurt Poster",
           image: "/images/tecpatl-MU.png",
           isLong: true
         },
@@ -189,19 +189,6 @@ export default function PortfolioPage() {
           return (
 
             <div key={category} className={`min-h-screen w-full ${category === 'Tochtli' ? 'relative' : 'bg-white'}`}>
-              {category === 'Tochtli' && (
-                <div className="absolute inset-0 overflow-hidden">
-                  <Image
-                    src="/images/tochtli-bg2.jpg"
-                    alt="Tochtli Background"
-                    fill
-                    className="object-cover"
-                    priority
-                    quality={100}
-                  />
-                  <div className="absolute inset-0 bg-black/0" />
-                </div>
-              )}
               <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'} ${category === 'Tochtli' ? 'relative z-10' : ''}`}>
                 
                 
@@ -214,7 +201,7 @@ export default function PortfolioPage() {
                     className={`${category === 'Tochtli' ? 'sticky top-0 pt-4' : 'sticky top-12'}`}
                   >
                     <span className={`text-sm text-gray-500 mb-4 block ${category === 'Sigma Lambda Beta' ? 'text-right' : ''}`}>0{index + 1}.</span>
-                    <h2 className={`text-5xl md:text-6xl xl:text-7xl font-black tracking-tighter text-black satoshi-black mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                    <h2 className={`text-7xl sm:text-8xl md:text-9xl xl:text-[13rem font-black tracking-tighter text-black satoshi-black mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
                       {category}
                     </h2>
                     <p className={`text-lg md:text-xl text-gray-600 max-w-xl ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
@@ -322,7 +309,7 @@ export default function PortfolioPage() {
                     >
                       <div className="relative h-full w-full overflow-hidden rounded-3xl bg-white">
                         <Image
-                          src="/placeholder.svg?height=800&width=1067"
+                          src="/images/sage-MU.png"
                           alt="Data Project 1"
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -340,8 +327,8 @@ export default function PortfolioPage() {
                   >
                     <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-white">
                       <Image
-                        src="/images/msql-logo.png"
-                        alt="MySQL logo"
+                        src="/images/python-logo.png"
+                        alt="Python logo"
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
@@ -355,7 +342,7 @@ export default function PortfolioPage() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="group"
                   >
-                    <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-[#15bc6c] flex items-center justify-center">
+                    <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-[#8dc185] flex items-center justify-center">
                       <span className="text-8xl font-bold text-black">Xx</span>
                     </div>
                   </motion.div>
@@ -367,7 +354,7 @@ export default function PortfolioPage() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="group"
                   >
-                    <div className="relative aspect-[2/1] w-full overflow-hidden rounded-3xl bg-gradient-to-r from-[#15bc6c] to-white" />
+                    <div className="relative aspect-[2/1] w-full overflow-hidden rounded-3xl bg-gradient-to-r from-[#8dc185] to-white" />
                   </motion.div>
 
                   {/* Dark Image Rectangle */}
@@ -378,12 +365,19 @@ export default function PortfolioPage() {
                     className="col-span-2"
                   >
                     <div className="relative aspect-[2/1] w-full overflow-hidden rounded-3xl bg-white">
+                      {/* Image */}
                       <Image
-                        src="/placeholder.svg?height=800&width=1422"
+                        src="/images/work-rect.png"
                         alt="Data Project 3"
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
+                      {/* Overlay Text */}
+                      <div className="absolute inset-0 bg-black/30" />
+                      <div className="absolute inset-0 flex items-center justify-center z-10 p-4 lg:p-8">
+                        <span className="text-xl  text-white text-center">A Python-based tool for cleaning and analyzing sales data from Shopify stores.
+                          Features include data standardization, inventory forecasting, and customizable insights to optimize clothing production and inventory management.</span>
+                      </div>
                     </div>
                   </motion.div>
 
@@ -401,14 +395,14 @@ export default function PortfolioPage() {
           <div className="relative min-h-screen">
             <div className="absolute inset-0 overflow-hidden">
               <Image
-                src="/placeholder.svg?height=800&width=800"
+                src="/images/Web.png"
                 alt="Tochtli Data Background"
                 fill
                 className="object-cover"
                 priority
                 quality={100}
               />
-              <div className="absolute inset-0 bg-black/30" />
+              <div className="absolute inset-0 bg-black/0" />
             </div>
             <div className="relative z-10 flex flex-col justify-center min-h-screen p-4 md:p-8">
               <motion.div
