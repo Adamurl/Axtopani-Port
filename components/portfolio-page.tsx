@@ -124,7 +124,7 @@ export default function PortfolioPage() {
   } //1
 
   return (
-    <div className="relative min-h-screen pb-12">
+    <div className="relative min-h-screen pb-0">
       {/* Fixed Footer */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-black py-2">
         <div className="grid grid-cols-4 pl-4 gap-[8vw]">
@@ -134,7 +134,7 @@ export default function PortfolioPage() {
           <p className="text-[15px] text-gray-400">Tlazo Camati [ Thank you ]</p>
         </div>
       </div>
-      <div className="relative z-2 p-0 md:p-0 flex flex-col bg-black">
+      <div className="relative z-0 p-0 md:p-0 flex flex-col bg-black">
       <div className="relative z-0 min-h-screen flex flex-col items-center justify-center p-8"> 
           {/* Main Title Section */}
           <motion.h1 
@@ -151,11 +151,11 @@ export default function PortfolioPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full max-w-9xl aspect-[4/1] relative overflow-hidden rounded-3xl bg-gray-800"
+            className="w-full max-w-9xl aspect-[3/1] relative overflow-hidden rounded-3xl bg-black"
           >
             {/* Replace the src with your actual image path */}
             <Image
-              src="/images/Port-Me.jpg"
+              src="/images/PortPhotoFinal.jpg"
               alt="Image"
               fill
               className="object-cover"
@@ -168,7 +168,7 @@ export default function PortfolioPage() {
         </div>
 
         {/* Bio Section */}
-        <div className="mb-12 items-center justify-center max-w-10xl mx-auto p-8">
+        <div className="mb-12 items-center text-center justify-center max-w-10xl mx-auto p-8">
           <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold text-white satoshi-black">
             Mexican-American founder, Web Developer [ specializing in creating responsive, user-focused websites ] and Data Analyst [ leveraging machine learning to drive data-driven insights and smarter decisions ]
           </p>
