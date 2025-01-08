@@ -124,21 +124,52 @@ export default function PortfolioPage() {
   } //1
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center">
-      <div className="relative z-2 p-2 md:p-0 flex flex-col">
-        <div className="flex justify-center items-center mb-2">
-          <span className="text-m text-black text-center ">2024 TLAZO CAMATI</span>
+    <div className="relative min-h-screen pb-12">
+      {/* Fixed Footer */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-black py-2">
+        <div className="grid grid-cols-4 pl-4 gap-[8vw]">
+          <p className="text-[15px] text-gray-400">©2024 - Adam Axtopani Gonzles, duh</p>
+          <p className="text-[15px] text-gray-400">As you can tell I really like brackets</p>
+          <p className="text-[15px] text-gray-400">Turning ideas into impact with code, creativity, and data-driven solutions.</p>
+          <p className="text-[15px] text-gray-400">Tlazo Camati [ Thank you ]</p>
         </div>
-        <header className="max-w-10xl mx-auto p-8">
-          <h1 className="text-7xl sm:text-8xl md:text-9xl xl:text-[13rem] font-black tracking-tighter text-black satoshi-black leading-none">ADAM AXTOPANI GONZALES</h1>
-          <p className="text-sm md:text-base lg:text-lg text-black mt-2 tracking-wide satoshi-regular">
-            [ ash-toh-pan-ee ]
-          </p>
-        </header>
+      </div>
+      <div className="relative z-2 p-0 md:p-0 flex flex-col bg-black">
+      <div className="relative z-0 min-h-screen flex flex-col items-center justify-center p-8"> 
+          {/* Main Title Section */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-[12vw] leading-none font-bold tracking-tighter text-white satoshi-black text-center p-0 m-0"
+          >
+            ADAM AXTOPANI GONZALES
+          </motion.h1>
+
+          {/* Rounded Rectangle Image Container */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-full max-w-9xl aspect-[4/1] relative overflow-hidden rounded-3xl bg-gray-800"
+          >
+            {/* Replace the src with your actual image path */}
+            <Image
+              src="/images/Port-Me.jpg"
+              alt="Image"
+              fill
+              className="object-cover"
+              priority
+              quality={100}
+            />
+            {/* Optional overlay for better text contrast if needed */}
+            <div className="absolute inset-0 bg-black/0" />
+          </motion.div>
+        </div>
 
         {/* Bio Section */}
         <div className="mb-12 items-center justify-center max-w-10xl mx-auto p-8">
-          <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold text-black satoshi-black">
+          <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold text-white satoshi-black">
             Mexican-American founder, Web Developer [ specializing in creating responsive, user-focused websites ] and Data Analyst [ leveraging machine learning to drive data-driven insights and smarter decisions ]
           </p>
         </div>
@@ -177,8 +208,8 @@ export default function PortfolioPage() {
         {/* Works Sections */}
         <header className="mb-8">
           <div className="flex items-center gap-8">
-            <h1 className="text-7xl sm:text-8xl md:text-9xl xl:text-[13rem] font-black tracking-tighter text-black satoshi-black leading-none shrink-0">DESIGN</h1>
-            <p className="text-sm md:text-base lg:text-lg text-black tracking-wide satoshi-regular self-stretch flex items-center max-w-xl">
+            <h1 className="text-7xl sm:text-8xl md:text-9xl xl:text-[13rem] font-black tracking-tighter text-white satoshi-black leading-none shrink-0">DESIGN</h1>
+            <p className="text-sm md:text-base lg:text-lg text-white tracking-wide satoshi-regular self-stretch flex items-center max-w-xl">
               This section showcases my work as a graphic designer and web developer. From creating visually compelling social media graphics to building responsive websites,
               I focus on blending creativity with functionality. My designs aim to engage audiences, enhance user experiences, and bring ideas to life.
             </p>
@@ -188,7 +219,7 @@ export default function PortfolioPage() {
           const key = category.toLowerCase() as WorkCategory;
           return (
 
-            <div key={category} className={`min-h-screen w-full ${category === 'Tochtli' ? 'relative' : 'bg-white'}`}>
+            <div key={category} className={`min-h-screen w-full ${category === 'Tochtli' ? 'relative' : 'bg-black'}`}>
               <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'} ${category === 'Tochtli' ? 'relative z-10' : ''}`}>
                 
                 
@@ -201,10 +232,10 @@ export default function PortfolioPage() {
                     className={`${category === 'Tochtli' ? 'sticky top-0 pt-4' : 'sticky top-12'}`}
                   >
                     <span className={`text-sm text-gray-500 mb-4 block ${category === 'Sigma Lambda Beta' ? 'text-right' : ''}`}>0{index + 1}.</span>
-                    <h2 className={`text-7xl sm:text-8xl md:text-9xl xl:text-[13rem font-black tracking-tighter text-black satoshi-black mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                    <h2 className={`text-7xl sm:text-8xl md:text-9xl xl:text-[13rem font-black tracking-tighter text-white satoshi-black mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
                       {category}
                     </h2>
-                    <p className={`text-lg md:text-xl text-gray-600 max-w-xl ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                    <p className={`text-lg md:text-xl text-gray-600 max-w-xl mb-6 pt-20 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
                       {works[key].sectionDescription}
                     </p>
                   </motion.div>
@@ -247,7 +278,7 @@ export default function PortfolioPage() {
                       <div className={`mt-4 flex items-start ${index % 2 === 0 ? '' : 'flex-row-reverse'}`}>
                         <span className={`text-sm text-gray-500 ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>{work.id}.</span>
                         <div className={index % 2 === 0 ? 'text-left' : 'text-right'}>
-                          <h3 className="text-lg font-bold text-black">{work.title}</h3>
+                          <h3 className="text-lg font-bold text-white">{work.title}</h3>
                           <p className="text-sm text-gray-600">{work.description}</p>
                         </div>
                       </div>
