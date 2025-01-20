@@ -1,42 +1,20 @@
-'use client'
+"use client"
 
 import { motion, AnimatePresence } from "framer-motion"
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { ChevronDown, ExternalLink } from 'lucide-react'
-import type { Works, WorkCategory} from '@/components/types/works'
+import type { Works, WorkCategory, Project} from '@/components/types/works'
 
 
 export default function PortfolioPage() {
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
 
   const skills = {
-    "01    PROGRAMMING LANGUAGES": [
-      "Python",
-      "MySQL",
-      "C++",
-      "C",
-      "TypeScript",
-      "HTML",
-      "CSS",
-      "Liquid"
-    ],
-    "02    LIBRARIES": [
-      "Pandas",
-      "NumPy",
-      "Scikit-Learn",
-      "Matplotlib"
-    ],
-    "03    SOFTWARE": [
-      "Git",
-      "GitHub",
-      "Figma",
-      "Jupyter Notebook",
-      "Visual Studio Code",
-      "Shopify",
-      "Tableau"
-    ]
+    "01 PROGRAMMING LANGUAGES": ["Python", "MySQL", "C++", "C", "TypeScript", "HTML", "CSS", "Liquid"],
+    "02 LIBRARIES": ["Pandas", "NumPy", "Scikit-Learn", "Matplotlib"],
+    "03 SOFTWARE": ["Git", "GitHub", "Figma", "Jupyter Notebook", "Visual Studio Code", "Shopify", "Tableau"],
   }
 
   const works: Works = {
@@ -70,7 +48,7 @@ export default function PortfolioPage() {
           id: 4,
           title: "Tote Bag Mock-Up",
           description: "Social Media Post",
-          image: "/images/tochtli-totemockup.jpg",
+          image: "/images/Tote-Bag-Tochtli.png",
         },
       ],
     },
@@ -123,15 +101,46 @@ export default function PortfolioPage() {
     setExpandedSection(expandedSection === section ? null : section)
   } //1
 
+  const carouselStyles = `
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .carousel-track {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 30s linear infinite;
+  }
+
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
+  .carousel-item {
+    flex: 0 0 auto;
+    padding: 0 10vw;
+  }
+`
+
   return (
     <div className="relative min-h-screen pb-0">
-      {/* Fixed Footer */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-black py-2">
-        <div className="grid grid-cols-4 pl-4 gap-[8vw]">
-          <p className="text-[15px] text-gray-400">©2024 - Adam Axtopani Gonzles, duh</p>
-          <p className="text-[15px] text-gray-400">As you can tell I really like brackets</p>
-          <p className="text-[15px] text-gray-400">Turning ideas into impact with code, creativity, and data-driven solutions.</p>
-          <p className="text-[15px] text-gray-400">Tlazo Camati [ Thank you ]</p>
+      <style jsx>{carouselStyles}</style>
+      {/* Carousel Footer */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-black py-2 overflow-hidden">
+        <div className="carousel-track whitespace-nowrap">
+          <span className="carousel-item">©2024 - Adam Axtopani Gonzles, duh</span>
+          <span className="carousel-item">As you can tell I really like brackets</span>
+          <span className="carousel-item">Turning ideas into impact with code, creativity, and data-driven solutions.</span>
+          <span className="carousel-item">Tlazo Camati [ Thank you ]</span>
+          <span className="carousel-item">©2024 - Adam Axtopani Gonzles, duh</span>
+          <span className="carousel-item">As you can tell I really like brackets</span>
+          <span className="carousel-item">Turning ideas into impact with code, creativity, and data-driven solutions.</span>
+          <span className="carousel-item">Tlazo Camati [ Thank you ]</span>
         </div>
       </div>
       <div className="relative z-0 p-0 md:p-0 flex flex-col bg-black">
@@ -155,7 +164,7 @@ export default function PortfolioPage() {
           >
             {/* Replace the src with your actual image path */}
             <Image
-              src="/images/PortPhotoFinal.jpg"
+              src="/images/main-photo.png"
               alt="Image"
               fill
               className="object-cover"

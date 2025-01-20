@@ -83,3 +83,13 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+.carousel-track span {
+  font-size: 10px;
+  color: #9ca3af; /* text-gray-400 equivalent */
+}
+
+.carousel-item {
+  font-size: 10px;
+  color: #9ca3af; /* text-gray-400 equivalent */
+}
