@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { ChevronDown, ExternalLink } from 'lucide-react'
-import type { Works, WorkCategory, Project} from '@/components/types/works'
+import type { Works, WorkCategory} from '@/components/types/works'
 
 
 export default function PortfolioPage() {
