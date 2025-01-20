@@ -3,10 +3,39 @@
 import { motion, AnimatePresence } from "framer-motion"
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronDown, ExternalLink } from 'lucide-react'
 import type { Works, WorkCategory} from '@/components/types/works'
 
+const CustomCursor = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const updatePosition = (e: MouseEvent) => {
+      setPosition({ x: e.clientX, y: e.clientY })
+    }
+
+    window.addEventListener("mousemove", updatePosition)
+
+    return () => window.removeEventListener("mousemove", updatePosition)
+  }, [])
+
+  return (
+    <div
+      className="fixed pointer-events-none z-50 hidden md:block"
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <div className="flex flex-col items-center">
+        <span className="text-2xl font-bold text-white">+</span>
+        <span className="text-l mt-1 text-white">[ SCROLL ]</span>
+      </div>
+    </div>
+  )
+}
 
 export default function PortfolioPage() {
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
@@ -129,6 +158,7 @@ export default function PortfolioPage() {
 
   return (
     <div className="relative min-h-screen pb-0">
+      <CustomCursor />
       <style jsx>{carouselStyles}</style>
       {/* Carousel Footer */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-black py-2 overflow-hidden">
@@ -400,7 +430,7 @@ export default function PortfolioPage() {
                 <div className="grid grid-cols-3 auto-rows-auto gap-4">
 
                   {/* Large Image - Spans 2 rows, 2 columns */}
-                  <div className="col-span-2 row-span-2 rounded-3xl">
+                  <div className="col-span-2 row-span-2 ">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -544,7 +574,7 @@ export default function PortfolioPage() {
                   whileHover={{ x: 40 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <h2 className="text-7xl sm:text-8xl md:text-9xl xl:text-[11rem] font-black tracking-tighter text-black satoshi-black leading-none">
+                  <h2 className="text-7xl sm:text-8xl md:text-9xl xl:text-[11rem] font-black tracking-tighter text-white satoshi-black leading-none">
                     {category}
                   </h2>
                   <motion.div
@@ -552,7 +582,7 @@ export default function PortfolioPage() {
                     animate={{ rotate: expandedSection === category ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <ChevronDown className="w-12 h-12 text-black opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ChevronDown className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                   </motion.div>
                 </motion.button>
                 
@@ -573,7 +603,7 @@ export default function PortfolioPage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
                           >
-                            <h3 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter text-black satoshi-black hover:text-gray-600 transition-colors cursor-default">
+                            <h3 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tighter text-[#d3d3d3] satoshi-black hover:text-gray-600 transition-colors cursor-default">
                               {skill}
                             </h3>
                           </motion.div>
