@@ -29,26 +29,26 @@ export default function PortfolioPage() {
           id: 1,
           title: "Tochtli Website",
           description: "Click to view",
-          image: "/images/tochtli-mockup.png",
+          image: "/images/Tochtli-Main.jpg",
           link: "https://www.tochtliwear.com/"
         },
         {
           id: 2,
           title: "Custom Packaging Mock-Up",
           description: "Concept",
-          image: "/images/Tochtli-BagMU.png",
+          image: "/images/Tochtli-Max.png",
         },
         {
           id: 3,
           title: "Cihuateteotl",
           description: "Informational Instagram Post",
-          image: "/images/DDLM-PostMain.png",
+          image: "/images/Tochtli-TELM-Mock.jpg",
         },
         {
           id: 4,
           title: "Tote Bag Mock-Up",
           description: "Social Media Post",
-          image: "/images/Tote-Bag-Tochtli.png",
+          image: "/images/Tochtli-Tote.jpg",
         },
       ],
     },
@@ -224,12 +224,73 @@ export default function PortfolioPage() {
             </p>
           </div>
         </header>
-        {(['Tochtli', 'Sigma Lambda Beta', 'Personal'] as const).map((category, index) => {
+
+        {/* New Tochtli Section */}
+        <div className="relative min-h-screen w-full px-4 md:px-8 mb-12">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 bg-black/50" />
+          </div>
+
+          {/* Header Content */}
+          <div className="relative z-10 px-4 md:px-8 pt-12 pb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="text-sm text-white/70 mb-4 block">01.</span>
+              <h2 className="text-5xl md:text-6xl xl:text-7xl font-black tracking-tighter text-white satoshi-black mb-4">
+                Tochtli
+              </h2>
+              <p className="text-lg md:text-xl text-white/80 max-w-xl">{works.tochtli.sectionDescription}</p>
+            </motion.div>
+          </div>
+
+          {/* Full-width Image Grid */}
+          <div className="relative z-10 grid grid-cols-2 w-full overflow-hidden rounded-3xl">
+            {works.tochtli.projects.map((work, workIndex) => (
+              <motion.div
+                key={work.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: workIndex * 0.1 }}
+                className="group relative"
+              >
+                <div className="relative aspect-[3/2] w-full overflow-hidden rounded-3xl ">
+                  {work.link ? (
+                    <Link href={work.link} target="_blank" rel="noopener noreferrer" className="block relative h-full">
+                      <Image
+                        src={work.image || "/placeholder.svg"}
+                        alt={work.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <ExternalLink className="text-white w-8 h-8" />
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className="relative h-full">
+                      <Image
+                        src={work.image || "/placeholder.svg"}
+                        alt={work.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {(['Sigma Lambda Beta', 'Personal'] as const).map((category, index) => {
           const key = category.toLowerCase() as WorkCategory;
           return (
 
-            <div key={category} className={`min-h-screen w-full ${category === 'Tochtli' ? 'relative' : 'bg-black'}`}>
-              <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'} ${category === 'Tochtli' ? 'relative z-10' : ''}`}>
+            <div key={category} className={`min-h-screen w-full`}>
+              <div className={`flex flex-col lg:flex-row min-h-screen ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
                 
                 
                 {/* Text Content */}
@@ -238,7 +299,6 @@ export default function PortfolioPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className={`${category === 'Tochtli' ? 'sticky top-0 pt-4' : 'sticky top-12'}`}
                   >
                     <span className={`text-sm text-gray-500 mb-4 block ${category === 'Sigma Lambda Beta' ? 'text-right' : ''}`}>0{index + 1}.</span>
                     <h2 className={`text-7xl sm:text-8xl md:text-9xl xl:text-[13rem font-black tracking-tighter text-white satoshi-black mb-4 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
@@ -260,7 +320,7 @@ export default function PortfolioPage() {
                       transition={{ duration: 0.5, delay: workIndex * 0.1 }}
                       className={`group relative ${work.isWide ? 'sm:col-span-2' : ''}`}
                     >
-                      <div className="relative w-full overflow-hidden rounded-lg">
+                      <div className="relative w-full overflow-hidden rounded-3xl">
                         {work.link ? (
                           <Link href={work.link} target="_blank" rel="noopener noreferrer" className="block relative">
                             <Image
@@ -340,7 +400,7 @@ export default function PortfolioPage() {
                 <div className="grid grid-cols-3 auto-rows-auto gap-4">
 
                   {/* Large Image - Spans 2 rows, 2 columns */}
-                  <div className="col-span-2 row-span-2">
+                  <div className="col-span-2 row-span-2 rounded-3xl">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
